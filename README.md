@@ -20,3 +20,11 @@ Crontab command
     */5 * * * * /usr/bin/env bash -c 'cd /home/user/cf_dyndns && source .venv/bin/activate && ./dyndns.py'
 
 NOTE: Update /home/user/cf_dyndns with the actual location of this script folder
+
+## Background Notes
+
+[Current public IP address endpoint](http://ipinfo.io/ip) - using this to find my public IP - more options are listed in StackOverflow question below
+
+[Cloudflare API v4 Documentation](https://api.cloudflare.com/#dns-records-for-a-zone-update-dns-record)
+
+[c# - Get public/external IP address? - Stack Overflow](https://stackoverflow.com/questions/3253701/get-public-external-ip-address/45242105)
