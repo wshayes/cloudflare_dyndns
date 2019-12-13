@@ -1,0 +1,4 @@
+**/.env
+CACHE.json
+.venv
+.vscode/settings.json
