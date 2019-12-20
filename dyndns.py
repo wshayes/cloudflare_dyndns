@@ -116,7 +116,7 @@ def main():
         cache_save_flag = True
         get_zone_id()
 
-    # Check is all domain_id's are found in CACHE.json
+    # Check if all domain_id's are found in CACHE.json
     all_found = False
     if CACHE.get("domain_ids", False):
         all_found = all([CACHE["domain_ids"].get(domain, False) for domain in DOMAINS])
@@ -131,7 +131,12 @@ def main():
 
     # Update public ip in cloudflare
     ip = get_public_ip()
-    update_cloudflare(ip)
+    if ip != CACHE.get("public_ip", ""):
+        update_cloudflare(ip)
+        CACHE["public_ip"] = ip
+        cache_save_flag = True
+    else:
+        print("Not updating Cloudflare - public IP hasn't changed.")
 
     # Save collected ids in CACHE.json file
     if cache_save_flag:
